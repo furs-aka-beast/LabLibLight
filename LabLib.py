@@ -58,8 +58,8 @@ def linear_theory(x_exp, y_exp, m = None, M = None):
     if m == None: m=min(x_exp)
     if M == None: M=max(x_exp)
     exp= pd.DataFrame({"x":x_exp,"y": y_exp})
-    exp=exp[exp.x<M]
-    exp=exp[exp.x>m]
+    exp=exp[exp.x<=M]
+    exp=exp[exp.x>=m]
     k, b = np.polyfit(exp.x, exp.y, 1)
     x_th = np.arange(m - 0.05 * (M - m), M + 0.05 * (M - m), 0.0001 * (M - m))
     y_th = []
